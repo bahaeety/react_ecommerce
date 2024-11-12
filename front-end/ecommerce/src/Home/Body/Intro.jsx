@@ -9,7 +9,7 @@ function Intro() {
     <Container fluid className="eco-body mt-4">
       <section   className="hero-section text-center mb-5"
         style={{
-          backgroundImage: "url(images/02d400b8-f374-4f54-94ee-0d6e31616c1e.webp)",
+          backgroundImage: "url(/images/02d400b8-f374-4f54-94ee-0d6e31616c1e.webp)",
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           backgroundRepeat: 'no-repeat',

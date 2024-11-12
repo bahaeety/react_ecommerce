@@ -1,13 +1,15 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
-import  Header  from './Home/Header/Header';
-import Body from './Home/Body/Body';
+import Home from './Home/Home';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
+const routers = createBrowserRouter(
+  [
+    {element: <Home/>, path:"/home"}
+  ]
+)
 function App() {
   return (
-    <div className="App">
-      <Header/>
-      <Body/>
-    </div>
+    <RouterProvider router={routers}/>
   );
 }
 
