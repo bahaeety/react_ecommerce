@@ -1,0 +1,56 @@
+.eco-footer {
+    background-color: #f9fafb;
+    color: #555555;
+    border-top: 2px solid #e0e0e0; /* Ligne en haut du footer */
+    padding-top: 40px;
+  }
+  
+  .eco-footer h5,
+  .eco-footer h6 {
+    font-weight: bold;
+    color: var(--eco-green); /* Couleur verte pour le thème éco */
+  }
+  
+  .eco-footer p,
+  .eco-footer a {
+    font-size: 0.9rem;
+    color: #666666;
+  }
+  
+  .eco-footer .footer-link {
+    color: #666666;
+    transition: color 0.3s ease;
+  }
+  
+  .eco-footer .footer-link:hover {
+    color: var(--eco-green); /* Couleur de survol */
+    text-decoration: underline; /* Soulignement au survol pour visibilité */
+  }
+  
+  .eco-footer .text-muted {
+    color: #777777 !important;
+  }
+  
+  /* Styles pour les icônes de réseaux sociaux */
+  .eco-footer .social-link {
+    color: #666666;
+    transition: color 0.3s ease, transform 0.3s ease;
+  }
+  
+  .eco-footer .social-link:hover {
+    color: var(--eco-green); /* Couleur verte au survol */
+    transform: scale(1.2); /* Agrandissement au survol */
+  }
+  
+  .eco-footer .social-link svg {
+    margin-right: 10px;
+  }
+  
+  /* Ajustements du copyright */
+  .eco-footer .text-center {
+    border-top: 1px solid #e0e0e0;
+    padding-top: 15px;
+    margin-top: 20px;
+    color: #999999;
+  }
+  

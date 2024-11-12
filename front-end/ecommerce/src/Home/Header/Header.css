@@ -1,0 +1,80 @@
+:root {
+  --eco-green: #38b2ac;           /* Primary eco color */
+  --eco-dark-green: #2d6a67;      /* Darker eco color */
+  --hover-light-green: #66c1b3;   /* Lighter hover color */
+  --eco-hover-bg: rgba(56, 178, 171, 0.15); /* Subtle background for link hover */
+}
+
+.eco-navbar {
+  background-color: white;
+  padding: 15px 20px;
+  border-bottom: 2px solid var(--eco-green);
+}
+
+.eco-navbar .navbar-brand {
+  color: var(--eco-green) !important;
+  font-weight: bold;
+  font-size: 1.5rem;
+  transition: color 0.3s ease;
+}
+
+.eco-navbar .navbar-brand:hover {
+  color: var(--hover-light-green);
+}
+
+.eco-navbar .navbar-toggler {
+  border-color: var(--eco-green);
+}
+
+.eco-navbar .navbar-nav .nav-link {
+  color: var(--eco-dark-green);
+  font-weight: 500;
+  margin-right: 15px;
+  padding: 8px 12px;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
+}
+
+.eco-navbar .navbar-nav .nav-link:hover {
+  background-color: var(--eco-hover-bg);
+  color: var(--eco-green);
+  transform: scale(1.05); /* Slight scale on hover for emphasis */
+}
+
+.eco-navbar .navbar-nav .nav-link svg {
+  color: var(--eco-dark-green);
+  transition: color 0.3s ease;
+}
+
+.eco-navbar .navbar-nav .nav-link:hover svg {
+  color: var(--hover-light-green); /* Change icon color on hover */
+}
+
+.nav-icon {
+  display: flex;
+  align-items: center;
+  font-size: 1rem;
+}
+
+.navbar-brand svg {
+  font-size: 1.8rem;
+  color: var(--eco-green);
+  transition: color 0.3s ease;
+}
+
+.navbar-brand:hover svg {
+  color: var(--hover-light-green); /* Highlight logo icon on hover */
+}
+
+@media (max-width: 768px) {
+  .eco-navbar {
+    padding: 10px 15px;
+  }
+  .eco-navbar .navbar-nav .nav-link {
+    margin-right: 0;
+    margin-bottom: 10px;
+    padding: 10px 15px;
+  }
+}

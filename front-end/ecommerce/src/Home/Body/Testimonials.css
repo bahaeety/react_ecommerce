@@ -1,0 +1,39 @@
+.testimonials-section {
+    background-color: #f9fafb; /* Fond légèrement gris pour délimiter la section */
+    padding: 60px 20px;
+    border-radius: 10px;
+  }
+  
+  .testimonials-section h2 {
+    font-weight: bold;
+    color: var(--eco-green); /* Couleur verte pour garder le thème éco */
+  }
+  
+  .testimonial-card {
+    border: none;
+    padding: 20px;
+    background-color: #ffffff;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+  }
+  
+  .testimonial-card:hover {
+    transform: scale(1.05); /* Expansion de la carte au survol */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); /* Ombre plus profonde */
+    background-color: #f1f9f9; /* Légère variation de couleur d'arrière-plan */
+  }
+  
+  /* Accentuation de l'image au survol */
+  .testimonial-card img {
+    transition: transform 0.3s ease, border-color 0.3s ease;
+  }
+  
+  .testimonial-card:hover img {
+    transform: scale(1.1); /* Agrandissement de l'image */
+    border-color: #66c1b3; /* Couleur de bordure plus claire au survol */
+  }
+  
+  /* Effet de couleur et style pour le texte au survol */
+  .testimonial-card:hover .testimonial-text {
+    color: #333333; /* Couleur légèrement plus sombre */
+  }
+  
