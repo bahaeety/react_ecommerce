@@ -1,0 +1,60 @@
+/* AuthPage.css */
+:root {
+    --eco-green: #38b2ac;
+    --eco-dark-green: #2d6a67;
+    --hover-light-green: #66c1b3;
+    --eco-muted: #6c757d;
+    --hero-gradient: linear-gradient(to right, #e8f5e9, #d0f0d9);
+  }
+  
+  .auth-hero-gradient {
+    background: var(--hero-gradient);
+    padding: 50px 0;
+    min-height: 100vh;
+  }
+  
+  .auth-title {
+    color: var(--eco-dark-green);
+    font-size: 2.5rem;
+    font-weight: bold;
+  }
+  
+  .auth-card {
+    max-width: 600px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .auth-card:hover {
+    transform: scale(1.02);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  }
+  
+  .toggle-button {
+    padding: 10px 20px;
+    font-weight: bold;
+    border: none;
+    background-color: var(--eco-green);
+    color: #ffffff;
+    transition: background-color 0.3s;
+  }
+  
+  .toggle-button.active {
+    background-color: var(--eco-dark-green);
+    color: #fff;
+  }
+  
+  .auth-button {
+    background-color: var(--eco-green);
+    color: #fff;
+    border: none;
+    transition: background-color 0.3s, transform 0.3s;
+  }
+  
+  .auth-button:hover {
+    background-color: var(--eco-dark-green);
+    transform: scale(1.05);
+  }
+  
