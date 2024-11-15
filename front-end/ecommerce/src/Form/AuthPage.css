@@ -1,60 +1,85 @@
-/* AuthPage.css */
+/* FullForm.css */
+/* Full page gradient background */
+body {
+  background: linear-gradient(135deg, #e0f7fa, #a7ffeb);
+  font-family: 'Manrope', sans-serif;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
 :root {
-    --eco-green: #38b2ac;
-    --eco-dark-green: #2d6a67;
-    --hover-light-green: #66c1b3;
-    --eco-muted: #6c757d;
-    --hero-gradient: linear-gradient(to right, #e8f5e9, #d0f0d9);
-  }
-  
-  .auth-hero-gradient {
-    background: var(--hero-gradient);
-    padding: 50px 0;
-    min-height: 100vh;
-  }
-  
-  .auth-title {
-    color: var(--eco-dark-green);
-    font-size: 2.5rem;
-    font-weight: bold;
-  }
-  
-  .auth-card {
-    max-width: 600px;
-    background-color: #ffffff;
-    border-radius: 10px;
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-  }
-  
-  .auth-card:hover {
-    transform: scale(1.02);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-  }
-  
-  .toggle-button {
-    padding: 10px 20px;
-    font-weight: bold;
-    border: none;
-    background-color: var(--eco-green);
-    color: #ffffff;
-    transition: background-color 0.3s;
-  }
-  
-  .toggle-button.active {
-    background-color: var(--eco-dark-green);
-    color: #fff;
-  }
-  
-  .auth-button {
-    background-color: var(--eco-green);
-    color: #fff;
-    border: none;
-    transition: background-color 0.3s, transform 0.3s;
-  }
-  
-  .auth-button:hover {
-    background-color: var(--eco-dark-green);
-    transform: scale(1.05);
-  }
-  
+  --eco-green: #38b2ac;
+  --eco-dark-green: #2d6a67;
+  --hover-light-green: #66c1b3;
+  --eco-muted: #6c757d;
+  --eco-light-gray: #f0f2f5;
+}
+
+.full-form {
+  font-family: 'Manrope', sans-serif;
+  color: #273346;
+  background-color: var(--eco-light-gray);
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.form-title {
+  color: var(--eco-dark-green);
+  font-size: 2rem;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.form-group label {
+  color: var(--eco-muted);
+  font-weight: bold;
+}
+
+.form-control {
+  border-radius: 8px;
+  border: 1px solid var(--eco-muted);
+  transition: box-shadow 0.3s ease;
+}
+
+.form-control:focus {
+  box-shadow: 0 0 8px 2px var(--eco-green);
+  border-color: var(--eco-green);
+  outline: none;
+}
+
+button {
+  background-color: var(--eco-green);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 15px;
+  font-weight: bold;
+  font-size: 1rem;
+  transition: background-color 0.3s ease;
+  width: 100%;
+}
+
+button:hover {
+  background-color: var(--hover-light-green);
+}
+
+.toggle-link {
+  color: var(--eco-green);
+  text-align: center;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+.toggle-link:hover {
+  color: var(--hover-light-green);
+  text-decoration: underline;
+}

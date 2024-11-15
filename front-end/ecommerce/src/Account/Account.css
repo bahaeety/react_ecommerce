@@ -1,0 +1,103 @@
+/* Account.css */
+
+:root {
+    --eco-green: #38b2ac;
+    --eco-dark-green: #2d6a67;
+    --hover-light-green: #66c1b3;
+    --eco-muted: #6c757d;
+  }
+  
+  .account-page {
+    font-family: 'Manrope', sans-serif;
+    color: #273346;
+  }
+  
+  .account-title {
+    color: var(--eco-dark-green);
+    font-size: 2.5rem;
+    font-weight: bold;
+  }
+  
+  .nav-pills .nav-link {
+    color: var(--eco-muted);
+    padding: 12px 15px;
+    display: flex;
+    align-items: center;
+    transition: background-color 0.3s ease;
+  }
+  
+  .nav-pills .nav-link.active {
+    background-color: var(--eco-green);
+    color: #fff;
+    border-radius: 5px;
+  }
+  
+  .nav-pills .nav-link:hover {
+    background-color: var(--hover-light-green);
+    color: #fff;
+  }
+  
+  .profile-card, .address-card {
+    background-color: #ffffff;
+    border: none;
+    border-radius: 8px;
+    transition: box-shadow 0.3s ease;
+  }
+  
+  .profile-card:hover, .address-card:hover {
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+  }
+  
+  .tab-content h3 {
+    color: var(--eco-green);
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  
+  .tab-content p {
+    font-size: 1rem;
+    color: var(--eco-muted);
+  }
+  
+  .eco-green {
+    background-color: var(--eco-green);
+    color: #fff;
+  }
+  
+  .eco-green:hover {
+    background-color: var(--hover-light-green);
+  }
+  
+  button.btn-danger {
+    background-color: #e3342f;
+    color: #fff;
+    transition: background-color 0.3s ease;
+  }
+  
+  button.btn-danger:hover {
+    background-color: #c53030;
+  }
+  
+  .fa-icon {
+    color: var(--eco-muted);
+    margin-right: 8px;
+  }
+  .modal-content {
+    border-radius: 8px;
+  }
+  
+  .modal-header, .modal-footer {
+    border: none;
+  }
+  
+  button.w-100 {
+    padding: 12px;
+    font-size: 1rem;
+  }
+  
+  button.eco-green:hover {
+    background-color: var(--hover-light-green);
+  }
+  

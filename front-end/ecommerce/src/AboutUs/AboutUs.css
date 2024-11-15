@@ -1,0 +1,115 @@
+/* AboutUs.css */
+
+:root {
+    --eco-green: #38b2ac;
+    --eco-dark-green: #2d6a67;
+    --hover-light-green: #66c1b3;
+    --eco-muted: #6c757d;
+    --hero-gradient: linear-gradient(to right, #e8f5e9, #d0f0d9);
+  }
+  
+  .about-page {
+    font-family: 'Manrope', sans-serif;
+    color: #273346;
+  }
+  
+  /* Hero Section Styling */
+  .about-hero-section {
+    background: var(--hero-gradient);
+    padding: 60px 0;
+    text-align: center;
+  }
+  
+  .about-title {
+    color: var(--eco-dark-green);
+    font-size: 2.5rem;
+    font-weight: bold;
+  }
+  
+  .about-subtitle {
+    font-size: 1.2rem;
+    color: var(--eco-muted);
+    max-width: 700px;
+    margin: 0 auto;
+  }
+  
+  /* Mission Section Styling */
+  .mission-section {
+    background-color: #ffffff;
+    padding: 50px 0;
+    text-align: center;
+  }
+  
+  .section-title {
+    color: var(--eco-green);
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+  
+  .mission-text {
+    font-size: 1.1rem;
+    color: var(--eco-muted);
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  /* Team Section Styling */
+  .team-section {
+    background-color: #f9fafb;
+    padding: 50px 0;
+  }
+  
+  .team-card {
+    background-color: #ffffff;
+    border: none;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .team-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+  }
+  
+  .team-photo {
+    height: 200px;
+    object-fit: cover;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+  }
+  
+  .team-name {
+    color: var(--eco-green);
+    font-size: 1.25rem;
+    font-weight: bold;
+  }
+  
+  .team-role {
+    color: var(--eco-muted);
+    font-size: 1rem;
+  }
+  
+  /* Call-to-Action Section Styling */
+  .cta-section {
+    background: var(--hero-gradient);
+  }
+  
+  .cta-title {
+    color: var(--eco-dark-green);
+    font-size: 2rem;
+    font-weight: bold;
+  }
+  
+  .cta-button {
+    background-color: var(--eco-green);
+    color: #fff;
+    padding: 12px 30px;
+    font-size: 1.1rem;
+    border: none;
+    transition: background-color 0.3s ease;
+  }
+  
+  .cta-button:hover {
+    background-color: var(--eco-dark-green);
+  }
+  

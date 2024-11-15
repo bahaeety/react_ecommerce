@@ -1,6 +1,7 @@
 import React from 'react';
 import { Container, Row, Col, Card, Button } from 'react-bootstrap';
 import { FaLeaf, FaRecycle, FaSeedling, FaGlobe } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 
 import "./Intro.css"
 
@@ -14,18 +15,20 @@ function Intro() {
           backgroundPosition: 'center',
           backgroundRepeat: 'no-repeat',
           backgroundPosition: 'center',
-        color: '#ffffff',
-        textAlign: 'center',
-        padding: '80px 20px', 
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        justifyContent: 'center',
-        borderRadius: '10px',
+          color: '#ffffff',
+          textAlign: 'center',
+          padding: '80px 20px', 
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          justifyContent: 'center',
+          borderRadius: '10px',
         }}>
         <h1 className="display-4">Welcome to EcoCart</h1>
         <p className="lead">Shop sustainably with our curated selection of eco-friendly products.</p>
-        <Button variant="success" className="mt-3 px-5 py-2">Shop Now</Button>
+        <Link to="/products">
+         <Button variant="success" className="mt-3 px-5 py-2">Shop Now</Button>
+        </Link>
       </section>
 
       {/* Categories Section */}

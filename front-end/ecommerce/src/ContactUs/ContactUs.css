@@ -1,0 +1,110 @@
+/* ContactUs.css */
+
+:root {
+    --eco-green: #38b2ac;
+    --eco-dark-green: #2d6a67;
+    --hover-light-green: #66c1b3;
+    --eco-muted: #6c757d;
+    --hero-gradient: linear-gradient(to right, #e8f5e9, #d0f0d9);
+  }
+  
+  .contact-page {
+    font-family: 'Manrope', sans-serif;
+    color: #273346;
+  }
+  
+  /* Hero Section Styling */
+  .contact-hero-section {
+    background: var(--hero-gradient);
+    padding: 60px 0;
+    text-align: center;
+  }
+  
+  .contact-title {
+    color: var(--eco-dark-green);
+    font-size: 2.5rem;
+    font-weight: bold;
+  }
+  
+  .contact-subtitle {
+    font-size: 1.2rem;
+    color: var(--eco-muted);
+    max-width: 700px;
+    margin: 0 auto;
+  }
+  
+  /* Contact Form Styling */
+  .contact-form-section {
+    background-color: #ffffff;
+    padding: 50px 0;
+  }
+  
+  .section-title {
+    color: var(--eco-green);
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+  
+  .contact-form {
+    background-color: #f9fafb;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+  }
+  
+  .contact-form input,
+  .contact-form textarea {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border: 1px solid var(--eco-muted);
+    border-radius: 5px;
+  }
+  
+  .contact-button {
+    background-color: var(--eco-green);
+    color: #fff;
+    padding: 12px;
+    font-size: 1.1rem;
+    border: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .contact-button:hover {
+    background-color: var(--hover-light-green);
+  }
+  
+  /* Contact Information Section Styling */
+  .contact-info-section {
+    background-color: #f9fafb;
+  }
+  
+  .info-title {
+    color: var(--eco-dark-green);
+    font-size: 1.2rem;
+    font-weight: bold;
+  }
+  
+  .info-detail {
+    color: var(--eco-muted);
+    font-size: 1rem;
+  }
+  
+  /* Map Section Styling */
+  .map-section {
+    padding: 50px 0;
+  }
+/* Customize focus outline to green */
+.contact-form input:focus,
+.contact-form textarea:focus {
+  outline: none; /* Remove default outline */
+  border-color: var(--eco-green); /* Green border */
+  box-shadow: 0 0 5px rgba(56, 178, 172, 0.6); /* Green shadow with a slight opacity */
+}
+
+.contact-form input,
+.contact-form textarea {
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
