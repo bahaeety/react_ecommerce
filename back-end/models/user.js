@@ -17,7 +17,8 @@ var user = new Schema({
     ,
     email:{
         type:String,
-        required:[true,'email is required']
+        required:[true,'email is required'],
+        unique:true
     }
     ,
     password:{
@@ -33,19 +34,16 @@ var user = new Schema({
     },
     phone_number:{
         type:String,
-        required:[true,'phone number is required']
+        required:[true,'phone number is required'],
+        unique: true
     },
     homeadresse:{
         type:String,
-        maxlength: 200
+        maxlength: 200,
     },
     billingadresse:{
         type:String,
         maxlength:200
-    },
-    image:{
-        type:String,
-        default:""
     }
 
     }

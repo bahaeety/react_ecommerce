@@ -4,19 +4,28 @@ const router = express.Router();
 
 const User = require('../models/user');
 
-router.post('/register',async (req, res) => {
-    const { Username, Email, Tel, Name, Password } = req.body;
-    
+router.post('/register', async (req, res) => {
+    const { Username, Email, Tel, Name, Password, HomeAddress, BillingAddress } = req.body;
     const user = new User({
         name: Name,
         email: Email,
         username: Username,
         phone_number: Tel,
-        password: Password
+        password: Password,
+        homeadresse: HomeAddress,
+        billingadresse: BillingAddress
     });
-    console.log(user);
-    await user.save();
+
+    try {
+                await user.save();
+        console.log('User registered:', user);
+        res.status(201).send({ message: 'User registered successfully', user });
+    } catch (error) {
+        console.error('Error registering user:', error);
+        res.status(500).send({ message: 'Error registering user', error });
+    }
 });
+
 
 router.post('/login',async(req,res)=>{
     const {Email,Password} = req.body;
@@ -45,29 +54,7 @@ router.get('/logout',(req,res)=>{
     res.send({message:"Logged out"});
 
 })  
-// profile picture : 
-router.post('/image', upload.single('profile'), async (req, res) => {
-    console.log(req.session)
-    const user = await User.findOne({ _id: req.session.User_id });
-  
-    if (req.file) {
-        const resizedImageBuffer = await sharp(req.file.buffer)
-        .resize(40, 40)
-        .png({ quality: 100 })
-        .toBuffer();
-      user.image = resizedImageBuffer.toString('base64');
-      await user.save();
-      res.json({ message: 'Profile image uploaded successfully' , image: user.image});
-    } else {
-      res.status(400).json({ message: 'No file uploaded' });
-    }
-  });
-router.get('/image',async(req,res)=>{
-    const user_id = req.session.User_id;
-    if(!user_id) return res.json("no session found to get the profile picture")
-    const user = await User.findOne({ _id: user_id });
-    res.json({ image: user.image });
-})
+
 router.get('/session-checker',(req,res)=>{
     if(req.session.User_id){
         res.send({message:"Session is active",user_id:req.session.User_id , username: req.session.Username})

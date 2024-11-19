@@ -1,13 +1,8 @@
 const express = require('express');
 const user = require('./routes/user')
 const cors = require('cors');
-const bcrypt = require('bcrypt')
-const session = require('express-session')
-
-
-
+const session = require('express-session');
 const connection = require('./database/mongoose')
-const User = require('./models/user');
 
 const app = express();
 app.use(express.urlencoded({ extended: true }))

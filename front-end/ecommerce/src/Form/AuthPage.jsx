@@ -1,10 +1,10 @@
-// FullForm.jsx
 import React, { useState } from 'react';
+import axios from 'axios'; 
 import { Container, Form, Button, Row, Col } from 'react-bootstrap';
 import './AuthPage.css';
 
 function AuthPage() {
-  const [isRegister, setIsRegister] = useState(true); // Toggle between Register and Login
+  const [isRegister, setIsRegister] = useState(true);
   const [formData, setFormData] = useState({
     name: '',
     username: '',
@@ -23,12 +23,35 @@ function AuthPage() {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    if (isRegister) {
-      console.log('Register Data:', formData);
-    } else {
-      console.log('Login Data:', { email: formData.email, password: formData.password });
+
+    try {
+      if (isRegister) {
+        const response = await axios.post('http://localhost:5000/user/register', {
+          Name: formData.name,
+          Username: formData.username,
+          Tel: formData.phone,
+          Email: formData.email,
+          Password: formData.password,
+          HomeAddress: formData.homeAddress,
+          BillingAddress: formData.billingAddress,
+        });
+
+        console.log('Register Response:', response.data);
+        alert('Registration successful!');
+      } else {
+        const response = await axios.post('http://localhost:5000/user/login', {
+          Email: formData.email,
+          Password: formData.password,
+        });
+
+        console.log('Login Response:', response.data);
+        alert(`Login successful! Welcome, ${response.data.user}`);
+      }
+    } catch (error) {
+      console.error('Error:', error.response ? error.response.data : error.message);
+      alert(error.response?.data.message || 'An error occurred. Please try again.');
     }
   };
 
@@ -114,7 +137,6 @@ function AuthPage() {
           </>
         )}
 
-        {/* Common fields for both Register and Login */}
         <Row className="mb-3">
           <Col>
             <Form.Group controlId="email">
