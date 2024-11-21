@@ -1,4 +1,5 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
+
 import Home from './Home/Home';
 import AuthPage from './Form/AuthPage';
 import AboutUs from './AboutUs/AboutUse';
@@ -7,6 +8,7 @@ import Account from './Account/Account';
 import ProductsPage from './ProductsPage/ProductsPage';
 import CartPage from './CartPage/CartPage';
 import ProtectedRoute from './Protected_routes/authentication';
+
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import axios from 'axios';
 
