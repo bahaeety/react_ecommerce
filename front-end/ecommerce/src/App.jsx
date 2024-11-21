@@ -6,17 +6,24 @@ import ContactUs from './ContactUs/ContactUs';
 import Account from './Account/Account';
 import ProductsPage from './ProductsPage/ProductsPage';
 import CartPage from './CartPage/CartPage';
+import ProtectedRoute from './Protected_routes/authentication';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import axios from 'axios';
+
+
+axios.defaults.withCredentials = true;
+axios.defaults.baseURL = 'http://localhost:5000'; 
+
 
 const routers = createBrowserRouter(
   [
-    {element: <Home/>, path:"/"},
+    {element: <ProtectedRoute><Home/></ProtectedRoute>, path:"/"},
     {element: <AuthPage/>, path:"/auth"},
-    {element: <AboutUs/>, path:"/about"},
-    {element: <ContactUs/>, path:"/contact"},
-    {element: <Account/>, path:"/account"},
-    {element: <ProductsPage/>, path:"/products"},
-    {element: <CartPage/>, path:"/cart"}
+    {element: <ProtectedRoute><AboutUs/></ProtectedRoute>, path:"/about"},
+    {element: <ProtectedRoute><ContactUs/></ProtectedRoute>, path:"/contact"},
+    {element: <ProtectedRoute><Account/></ProtectedRoute>, path:"/account"},
+    {element: <ProtectedRoute><ProductsPage/></ProtectedRoute>, path:"/products"},
+    {element: <ProtectedRoute><CartPage/></ProtectedRoute>, path:"/cart"}
   ]
 )
 function App() {

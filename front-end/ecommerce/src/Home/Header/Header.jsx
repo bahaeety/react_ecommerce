@@ -1,9 +1,21 @@
 import React from 'react';
 import { Navbar, Nav, Container, NavDropdown } from 'react-bootstrap';
-import { FaLeaf, FaShoppingCart, FaUser, FaHome } from 'react-icons/fa';
-import "./Header.css"
+import { FaLeaf, FaShoppingCart, FaUser, FaHome, FaSignOutAlt } from 'react-icons/fa';
+import "./Header.css";
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 function Header() {
+  const navigate = useNavigate();
+  const handleLogout = async () => {
+  const logout = await axios.get('/user/logout');
+  if(logout){
+    console.log(logout)
+    navigate('/auth')
+  }
+    
+  };
+
   return (
     <Navbar expand="md" className="shadow-sm eco-navbar">
       <Container>
@@ -32,6 +44,9 @@ function Header() {
             </Nav.Link>
             <Nav.Link href="/cart" className="nav-icon text-dark d-flex align-items-center">
               <FaShoppingCart className="me-2" /> Cart
+            </Nav.Link>
+            <Nav.Link onClick={handleLogout} className="nav-icon text-dark d-flex align-items-center logout-link">
+              <FaSignOutAlt className="me-2" /> Log Out
             </Nav.Link>
           </Nav>
         </Navbar.Collapse>

@@ -1,4 +1,3 @@
-// CartPage.jsx
 import React, { useState } from 'react';
 import { Container, Row, Col, Card, Button, Form } from 'react-bootstrap';
 import Header from '../Home/Header/Header';
@@ -32,7 +31,6 @@ function CartPage() {
     <Container className="cart-page mt-5">
       <h2 className="cart-title text-center mb-4">Shopping Cart</h2>
       <Row>
-        {/* Cart Items Section */}
         <Col md={8}>
           {cartItems.map((item) => (
             <Card key={item.id} className="cart-item mb-3">
@@ -62,7 +60,6 @@ function CartPage() {
           ))}
         </Col>
 
-        {/* Summary Section */}
         <Col md={4}>
           <Card className="cart-summary">
             <Card.Body>

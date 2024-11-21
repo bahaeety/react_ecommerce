@@ -8,7 +8,6 @@ function Register() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Add registration logic here
   };
 
   return (

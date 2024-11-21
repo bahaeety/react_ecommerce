@@ -8,7 +8,6 @@ function Footer() {
     <footer className="eco-footer py-5">
       <Container>
         <Row className="text-center text-md-start align-items-start">
-          {/* Logo et Description */}
           <Col md={3} className="mb-4">
             <h5 className="text-success">EcoCart</h5>
             <p className="text-muted small">
@@ -16,7 +15,6 @@ function Footer() {
             </p>
           </Col>
 
-          {/* Liens Utiles */}
           <Col md={3} className="mb-4">
             <h6 className="text-success">Quick Links</h6>
             <ul className="list-unstyled">
@@ -27,7 +25,6 @@ function Footer() {
             </ul>
           </Col>
 
-          {/* Contact Section */}
           <Col md={3} className="mb-4">
             <h6 className="text-success">Contact Us</h6>
             <p className="small text-muted">
@@ -38,7 +35,6 @@ function Footer() {
             </p>
           </Col>
 
-          {/* Réseaux Sociaux */}
           <Col md={3} className="mb-4">
             <h6 className="text-success">Follow Us</h6>
             <div className="d-flex justify-content-center justify-content-md-start">
@@ -50,7 +46,6 @@ function Footer() {
           </Col>
         </Row>
 
-        {/* Copyright */}
         <Row className="mt-4">
           <Col className="text-center text-muted small">
             &copy; {new Date().getFullYear()} EcoCart. All rights reserved.

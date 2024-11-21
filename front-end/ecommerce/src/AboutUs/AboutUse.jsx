@@ -1,15 +1,15 @@
-// AboutUs.js
 import React from 'react';
 import { Container, Row, Col, Button, Card } from 'react-bootstrap';
 import './AboutUs.css';
 import Header from '../Home/Header/Header';
 import Footer from '../Home/Footer/Footer';
+import { useNavigate } from 'react-router-dom';
 function AboutUs() {
+  const navigate = useNavigate();
   return (
     <>
     <Header />
     <div className="about-page eco-body">
-      {/* Hero Section */}
       <section className="about-hero-section">
         <Container className="text-center py-5">
           <h1 className="about-title">About Us</h1>
@@ -19,7 +19,6 @@ function AboutUs() {
         </Container>
       </section>
 
-      {/* Company Mission */}
       <section className="mission-section">
         <Container>
           <Row className="justify-content-center text-center py-5">
@@ -35,12 +34,10 @@ function AboutUs() {
         </Container>
       </section>
 
-      {/* Team Section */}
       <section className="team-section">
         <Container>
           <h2 className="section-title text-center my-5">Meet the Team</h2>
           <Row className="justify-content-center">
-            {/* Team Member Cards */}
             <Col md={4} className="mb-4">
               <Card className="team-card text-center shadow-sm">
                 <Card.Img variant="top" src="path/to/photo1.jpg" alt="Team Member 1" className="team-photo" />
@@ -72,11 +69,10 @@ function AboutUs() {
         </Container>
       </section>
 
-      {/* Call to Action */}
       <section className="cta-section text-center py-5">
         <Container>
           <h2 className="cta-title">Join Us on Our Eco-Friendly Journey!</h2>
-          <Button variant="eco-green" className="cta-button mt-4">
+          <Button onClick={()=>{navigate('/products')}} variant="eco-green" className="cta-button mt-4">
             Explore Our Products
           </Button>
         </Container>

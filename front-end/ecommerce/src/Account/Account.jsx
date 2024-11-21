@@ -1,26 +1,49 @@
-// Account.js
-import React, { useState } from 'react';
+import  { useEffect, useState } from 'react';
 import { Container, Row, Col, Tab, Nav, Button, Form, Modal, ListGroup, Card } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser, faBoxOpen, faAddressBook, faCog, faEdit, faTrash, faLock } from '@fortawesome/free-solid-svg-icons';
 import './Account.css';
 import Header from '../Home/Header/Header';
 import Footer from '../Home/Footer/Footer';
+import session_cheker from '../Protected_routes/session-cheker';
 function Account() {
-  // State for Profile Edit Modal
+  const [user, setUser] = useState({
+    name: '',
+    email: '',
+    password: '',
+    homeadresse: '',
+    billingadresse: '',
+    phone_number: ''
+  })
   const [showEditProfile, setShowEditProfile] = useState(false);
   const handleCloseEditProfile = () => setShowEditProfile(false);
   const handleShowEditProfile = () => setShowEditProfile(true);
 
-  // State for Address Edit Modal
   const [showEditAddress, setShowEditAddress] = useState(false);
   const handleCloseEditAddress = () => setShowEditAddress(false);
   const handleShowEditAddress = () => setShowEditAddress(true);
 
-  // State for Password Change Modal
   const [showChangePassword, setShowChangePassword] = useState(false);
   const handleCloseChangePassword = () => setShowChangePassword(false);
   const handleShowChangePassword = () => setShowChangePassword(true);
+  useEffect(()=>{
+    const getUser = async()=>{
+      const response = await session_cheker();
+      console.log(response)
+      if(response){
+       setUser({
+        name: response.username,
+        email: response.email,
+        password: response.password,
+        homeadresse: response.homeaddress,
+        billingadresse: response.billingaddress,
+        phone_number: response.phonenumber
+       })
+       console.log(user)
+       }
+    }
+    getUser();
+  },[])
 
   return (
     <>
@@ -55,19 +78,17 @@ function Account() {
           </Col>
           <Col sm={9}>
             <Tab.Content>
-              {/* Profile Information Section */}
               <Tab.Pane eventKey="profile">
                 <h3><FontAwesomeIcon icon={faUser} /> Profile Information</h3>
                 <Card className="profile-card shadow-sm p-4">
-                  <p><strong>Name:</strong> John Doe</p>
-                  <p><strong>Email:</strong> john.doe@example.com</p>
-                  <p><strong>Phone:</strong> +1 234 567 890</p>
+                  <p><strong>Name:</strong> {user.name}</p>
+                  <p><strong>Email:</strong> {user.email}</p>
+                  <p><strong>Phone:</strong> +{user.phone_number}</p>
                   <Button variant="eco-green" onClick={handleShowEditProfile} className="mt-3">
                     <FontAwesomeIcon icon={faEdit} /> Edit Profile
                   </Button>
                 </Card>
 
-                {/* Edit Profile Modal */}
                 <Modal show={showEditProfile} onHide={handleCloseEditProfile}>
                   <Modal.Header closeButton>
                     <Modal.Title>Edit Profile</Modal.Title>
@@ -94,7 +115,6 @@ function Account() {
                 </Modal>
               </Tab.Pane>
 
-              {/* Order History Section */}
               <Tab.Pane eventKey="orders">
                 <h3><FontAwesomeIcon icon={faBoxOpen} /> Order History</h3>
                 <ListGroup variant="flush">
@@ -107,18 +127,16 @@ function Account() {
                 </ListGroup>
               </Tab.Pane>
 
-              {/* Address Book Section */}
               <Tab.Pane eventKey="addresses">
                 <h3><FontAwesomeIcon icon={faAddressBook} /> Address Book</h3>
                 <Card className="address-card shadow-sm p-4">
-                  <p><strong>Home Address:</strong> 123 Greenway Drive, Eco City, EC 12345</p>
-                  <p><strong>Billing Address:</strong> 456 Earth Avenue, Eco City, EC 67890</p>
+                  <p><strong>Home Address:</strong> {user.homeadresse}</p>
+                  <p><strong>Billing Address:</strong> {user.billingadresse}</p>
                   <Button variant="eco-green" onClick={handleShowEditAddress} className="mt-3">
                     <FontAwesomeIcon icon={faEdit} /> Edit Addresses
                   </Button>
                 </Card>
 
-                {/* Edit Address Modal */}
                 <Modal show={showEditAddress} onHide={handleCloseEditAddress}>
                   <Modal.Header closeButton>
                     <Modal.Title>Edit Address</Modal.Title>
@@ -141,7 +159,6 @@ function Account() {
                 </Modal>
               </Tab.Pane>
 
-              {/* Account Settings Section */}
               <Tab.Pane eventKey="settings">
                 <h3><FontAwesomeIcon icon={faCog} /> Account Settings</h3>
                 <Button variant="eco-green" onClick={handleShowChangePassword} className="mt-3">
@@ -151,7 +168,6 @@ function Account() {
                   <FontAwesomeIcon icon={faTrash} /> Delete Account
                 </Button>
 
-                {/* Change Password Modal */}
                 <Modal show={showChangePassword} onHide={handleCloseChangePassword}>
                   <Modal.Header closeButton>
                     <Modal.Title>Change Password</Modal.Title>

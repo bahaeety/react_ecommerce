@@ -7,7 +7,6 @@ function Login() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Add login logic here
   };
 
   return (

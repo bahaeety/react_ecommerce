@@ -38,11 +38,19 @@ router.post('/login',async(req,res)=>{
         return res.status(400).send({message:"Invalid password"});
     }
 
-    req.session.User_id = user._id
-    req.session.Username = user.username
+ 
+    req.session.User_id = user._id;
+    req.session.Username = user.username;
+    req.session.Billingaddress = user.billingadresse;
+    req.session.Homeaddress = user.homeadresse;
+    req.session.Phonenumber = user.phone_number;
+    req.session.Email = Email;
+    
+    console.log('Session after login:', req.session);
+
 
     
-    res.send({ message: "Login successful", user: user.username  , user1: req.session.id , user2: req.session.Username});
+    res.send({ message: "Login successful", user: user.username  , user_id: req.session.id , username: req.session.Username});
 
 })
 
@@ -50,18 +58,38 @@ router.post('/login',async(req,res)=>{
 router.get('/logout',(req,res)=>{
     req.session.destroy();
     res.clearCookie("connect.sid");
-    res.end();
     res.send({message:"Logged out"});
+    res.end();
+
 
 })  
+router.get('/session-checker', (req, res) => {
+    try {
+        console.log(req.session.User_id)
+      if (req.session.User_id) {
+        res.status(200).send({
+          message: "Session is active",
+          user_id: req.session.User_id,
+          email: req.session.Email,
+          username: req.session.Username,
+          billingaddress: req.session.Billingaddress,
+          homeaddress: req.session.Homeaddress,
+          phonenumber: req.session.Phonenumber
 
-router.get('/session-checker',(req,res)=>{
-    if(req.session.User_id){
-        res.send({message:"Session is active",user_id:req.session.User_id , username: req.session.Username})
-        }
-        else{
-            res.send({message:"Session is not active",user_id:null} )
+        });
+      } else {
+        res.status(401).send({
+          message: "Session is not active",
+          user_id: null,
+          username: null,
+        });
+      }
+    } catch (err) {
+      console.error("Error in session checker:", err.message);
+      res.status(500).send({
+        message: "Internal server error",
+      });
     }
-})
-
+  });
+  
 module.exports = router;

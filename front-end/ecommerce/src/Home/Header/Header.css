@@ -78,3 +78,28 @@
     padding: 10px 15px;
   }
 }
+
+.eco-navbar .navbar-nav .logout-link {
+  color: var(--eco-dark-green);
+  font-weight: 500;
+  padding: 8px 12px;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
+}
+
+.eco-navbar .navbar-nav .logout-link:hover {
+  background-color: var(--eco-hover-bg);
+  color: var(--eco-green);
+  transform: scale(1.05);
+}
+
+.eco-navbar .navbar-nav .logout-link svg {
+  color: var(--eco-dark-green);
+  transition: color 0.3s ease;
+}
+
+.eco-navbar .navbar-nav .logout-link:hover svg {
+  color: var(--hover-light-green);
+}

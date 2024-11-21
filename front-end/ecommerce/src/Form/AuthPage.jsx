@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import axios from 'axios'; 
+import { useNavigate } from 'react-router-dom';
 import { Container, Form, Button, Row, Col } from 'react-bootstrap';
 import './AuthPage.css';
 
 function AuthPage() {
+  const navigate = useNavigate()
   const [isRegister, setIsRegister] = useState(true);
   const [formData, setFormData] = useState({
     name: '',
@@ -28,7 +30,7 @@ function AuthPage() {
 
     try {
       if (isRegister) {
-        const response = await axios.post('http://localhost:5000/user/register', {
+        const response = await axios.post('/user/register', {
           Name: formData.name,
           Username: formData.username,
           Tel: formData.phone,
@@ -39,15 +41,17 @@ function AuthPage() {
         });
 
         console.log('Register Response:', response.data);
-        alert('Registration successful!');
       } else {
         const response = await axios.post('http://localhost:5000/user/login', {
           Email: formData.email,
           Password: formData.password,
-        });
+
+        },
+        { withCredentials: true } );
 
         console.log('Login Response:', response.data);
-        alert(`Login successful! Welcome, ${response.data.user}`);
+        navigate('/')
+      
       }
     } catch (error) {
       console.error('Error:', error.response ? error.response.data : error.message);
