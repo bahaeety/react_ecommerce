@@ -1,5 +1,6 @@
 import axios from "axios";
 const session_cheker = async () => {
+  
   try {
     const session = await axios.get('/user/session-checker');
 

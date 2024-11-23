@@ -1,11 +1,15 @@
 const mongoose = require('mongoose');
-var Schema = mongoose.Schema;
-var panier = Schema({
-    username: {type: Schema.Types.ObjectId, ref: 'User'},
-    items: [{
-        product: { type: mongoose.Schema.Types.ObjectId, ref: 'Product' },
-        quantity: { type: Number, required: true, min: 1 }
-      }],  
-    total_cost: {type: Number}
+const Schema = mongoose.Schema;
+
+const panierSchema = new Schema({
+  username: { type: Schema.Types.ObjectId, ref: 'User' }, // Ensure this matches the User schema
+  items: [
+    {
+      product: { type: Schema.Types.ObjectId, ref: 'Produit' }, // Ensure this matches the Product schema
+      quantity: { type: Number, required: true, min: 1 }
+    }
+  ],
+  total_cost: { type: Number }
 });
-module.exports = mongoose.model('Panier', panier);
+
+module.exports = mongoose.model('Panier', panierSchema);

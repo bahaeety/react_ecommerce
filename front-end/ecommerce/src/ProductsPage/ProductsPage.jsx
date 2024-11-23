@@ -28,6 +28,7 @@ function ProductsPage() {
       setCategory(categoryFromQuery);
     }
   }, [location.search]);
+
   useEffect(() => {
     const fetchProducts = async () => {
       try {
@@ -71,22 +72,32 @@ function ProductsPage() {
   const totalPages = Math.ceil(filteredProducts.length / productsPerPage);
 
   const handlePageChange = (pageNumber) => setCurrentPage(pageNumber);
-  const handleAddToCart = async (productId) => {
-    const response = await session_cheker();
-    const userId = response?.user_id; 
-    try {
-        const response = await axios.post('/panier/add', {
-            userId,
-            productId,
-            quantity: 1, 
-        });
-        alert('Product added to cart!');
-    } catch (error) {
-        console.error('Error adding product to cart:', error);
-        alert('Failed to add product to cart.');
-    }
-};
 
+  const handleAddToCart = async (productId) => {
+    try {
+      const response_id = await session_cheker();
+      const id = response_id.user_id;
+  
+      if (!id) {
+        alert('User not logged in. Please login to add items to the cart.');
+        return;
+      }
+  
+      console.log('Adding to cart with:', { userId: id, productId, quantity: 1 });
+  
+      const response = await axios.post('/panier/add-to-cart', {
+        userId: id,
+        productId,
+        quantity: 1,
+      });
+  
+      alert('Product added to cart successfully!');
+    } catch (error) {
+      console.error('Error adding product to cart:', error.response?.data || error.message);
+      alert('Failed to add product to cart.');
+    }
+  };
+  
   return (
     <>
       <Header />
