@@ -1,0 +1,9 @@
+.dashboard-overview {
+    margin-top: 20px;
+}
+
+.dashboard-card {
+    margin-bottom: 20px;
+    text-align: center;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}

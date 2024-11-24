@@ -21,5 +21,45 @@ router.get('/featured', async (req, res) => {
     }
 });
 
+// Add a new product
+router.post('/', async (req, res) => {
+    const produit = new Product({
+        name: req.body.name,
+        price: req.body.price,
+        image: req.body.image,
+        category: req.body.category,
+    });
+    try {
+        const newProduit = await produit.save();
+        res.status(201).json(newProduit);
+    } catch (err) {
+        res.status(400).json({ message: err.message });
+    }
+});
+
+// Update a product
+router.put('/:id', async (req, res) => {
+    try {
+        const updatedProduit = await Product.findByIdAndUpdate(
+            req.params.id,
+            req.body,
+            { new: true }
+        );
+        res.status(200).json(updatedProduit);
+    } catch (err) {
+        res.status(400).json({ message: err.message });
+    }
+});
+
+// Delete a product
+router.delete('/:id', async (req, res) => {
+    try {
+        await Product.findByIdAndDelete(req.params.id);
+        res.status(200).json({ message: 'Product deleted' });
+    } catch (err) {
+        res.status(500).json({ message: err.message });
+    }
+});
+
 
 module.exports = router;

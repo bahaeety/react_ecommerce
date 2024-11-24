@@ -7,6 +7,7 @@ const session_cheker = async () => {
     if (!session.data) {
       throw new Error('Session data is invalid');
     }
+    console.log(session.data)
 
     return session.data;
   } catch (e) {

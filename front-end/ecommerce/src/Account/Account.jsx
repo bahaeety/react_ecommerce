@@ -72,7 +72,7 @@ function Account() {
   };
   const handleSaveAddressChanges = async () => {
     try {
-      const response_id = await session_cheker(); // Ensure userId is included
+      const response_id = await session_cheker(); 
       const userId = response_id.user_id;
   
       const payload = {

@@ -42,15 +42,20 @@ function AuthPage() {
 
         console.log('Register Response:', response.data);
       } else {
-        const response = await axios.post('http://localhost:5000/user/login', {
+        const response = await axios.post('/user/login', {
           Email: formData.email,
           Password: formData.password,
 
-        },
-        { withCredentials: true } );
-
+        })
         console.log('Login Response:', response.data);
-        navigate('/')
+
+        if(response.data.role === "admin"){
+          navigate('/admin')
+        }
+        else{
+          navigate('/')
+
+        }
       
       }
     } catch (error) {
