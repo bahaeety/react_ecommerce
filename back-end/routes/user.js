@@ -77,7 +77,7 @@ router.put('/update-profile', async (req, res) => {
     }
     const user_id = req.session.User_id
     const user = await User.findOneAndUpdate(
-      { user_id }, 
+      { _id: user_id }, 
       { name, email, phone_number },
       { new: true } 
     );
