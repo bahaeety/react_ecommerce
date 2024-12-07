@@ -5,7 +5,7 @@ import Footer from '../Home/Footer/Footer';
 import axios from 'axios';
 import session_cheker from '../Protected_routes/session-cheker';
 import './CartPage.css';
-// import PayPalButton from './PaypalButton';
+ import PayPalButton from './PaypalButton';
 
 function CartPage() {
   const [cart, setCart] = useState([]);
@@ -70,7 +70,7 @@ function CartPage() {
  
 
 
-  const totalPrice = cart.reduce((sum, item) => sum + item.product.price * item.quantity, 0);
+  const totalPrice = cart.reduce((sum, item) => sum + item.product.price * item.quantity, 0) ;
 
   return (
     <>
@@ -90,8 +90,10 @@ function CartPage() {
                 >
                   Proceed to Checkout
                 </Button>
-                {/* <PayPalButton total={totalPrice.toFixed(2)} /> */}
-              </Card.Body>
+                <PayPalButton
+                  total={ totalPrice }
+                  
+                />              </Card.Body>
             </Card>
           </Col>
         </Row>

@@ -1,110 +1,93 @@
-// import React, { useEffect } from 'react';
+import React, { useEffect } from "react";
 
-// let isPayPalScriptLoaded = false; // Global variable to track script load status
+const PayPalButton = ({ totalPrice }) => {
 
-// const PayPalButton = ({ total }) => {
-//   useEffect(() => {
-//     const loadPayPalScript = () => {
-//       return new Promise((resolve, reject) => {
-//         if (typeof window === 'undefined' || typeof document === 'undefined') {
-//           return reject(new Error('Window or document is not defined.'));
-//         }
+  useEffect(() => {
+    console.log("Initializing PayPal Button...");
 
-//         // If script is already flagged as loaded, resolve immediately
-//         if (isPayPalScriptLoaded) {
-//           return resolve();
-//         }
+    const existingScript = document.querySelector("#paypal-sdk");
 
-//         const existingScript = document.getElementById('paypal-sdk');
+    const loadPayPalButtons = () => {
+      if (window.paypal) {
+        console.log("Rendering PayPal Buttons...");
+        window.paypal
+          .Buttons({
+            createOrder: (data, actions) => {
+              if (totalPrice <= 0) {
+                alert("Total must be greater than 0 to proceed with payment.");
+                return;
+              }
+              return actions.order.create({
+                purchase_units: [
+                  {
+                    amount: {
+                      value: totalPrice.toString(), 
+                    },
+                  },
+                ],
+              });
+            },
+            onApprove: (data, actions) => {
+              console.log("PayPal order approved.");
+              return actions.order
+                .capture()
+                .then((details) => {
+                  console.log("Order captured successfully:", details);
+                  alert(
+                    `Transaction completed by ${details.payer.name.given_name}`
+                  );
+                  
+                })
+                .catch((err) => {
+                  console.error("Error capturing PayPal order:", err);
+                });
+            },
+            onError: (err) => {
+              console.error("PayPal Button Error:", err);
+            },
+          })
+          .render("#paypal-button-container")
+          .catch((err) => {
+            console.error("Error rendering PayPal Buttons:", err);
+          });
+      } else {
+        console.error("PayPal SDK is not available.");
+      }
+    };
 
-//         // If script exists and PayPal is available, just resolve
-//         if (existingScript && window.paypal) {
-//           isPayPalScriptLoaded = true;
-//           return resolve();
-//         }
+    if (!existingScript) {
+      console.log("Loading PayPal SDK...");
+      const script = document.createElement("script");
+      script.src =
+        "https://www.paypal.com/sdk/js?client-id=ART50ZLUTRsApktCVHMF4i4KzbbnM7o5b80o6tpHwODyTaxZGHaxkFzoWf_P9DStGm4OmmEV9dYB0kJs&currency=USD&debug=true";
+      script.id = "paypal-sdk";
+      script.async = true;
 
-//         // If the script exists but paypal not available yet, attach listeners once
-//         if (existingScript && !window.paypal) {
-//           existingScript.addEventListener('load', () => {
-//             isPayPalScriptLoaded = true;
-//             resolve();
-//           }, { once: true });
+      script.onload = () => {
+        console.log("PayPal SDK loaded successfully.");
+        loadPayPalButtons();
+      };
 
-//           existingScript.addEventListener('error', () => {
-//             reject(new Error('Failed to load the PayPal SDK script.'));
-//           }, { once: true });
-//           return;
-//         }
+      script.onerror = () => {
+        console.error("Failed to load PayPal SDK script.");
+      };
 
-//         // If no script exists, create and append it
-//         const script = document.createElement('script');
-//         script.id = 'paypal-sdk';
-//         script.src = "https://www.paypal.com/sdk/js?client-id=ART50ZLUTRsApktCVHMF4i4KzbbnM7o5b80o6tpHwODyTaxZGHaxkFzoWf_P9DStGm4OmmEV9dYB0kJs&currency=USD";
-//         script.async = true;
-//         script.crossOrigin = 'anonymous';
+      document.body.appendChild(script);
+    } else {
+      console.log("PayPal SDK already loaded.");
+      loadPayPalButtons();
+    }
 
-//         script.onload = () => {
-//           isPayPalScriptLoaded = true;
-//           resolve();
-//         };
+    return () => {
+      console.log("Cleaning up PayPal Button...");
+      const container = document.querySelector("#paypal-button-container");
+      if (container) {
+        container.innerHTML = ""; 
+      }
+    };
+  }, [totalPrice]);
 
-//         script.onerror = () => {
-//           reject(new Error('Failed to load the PayPal SDK script.'));
-//         };
+  return <div id="paypal-button-container" className="my-4"></div>;
+};
 
-//         document.body.appendChild(script);
-//       });
-//     };
-
-//     const initializePayPalButtons = async () => {
-//       try {
-//         await loadPayPalScript();
-
-//         if (window.paypal) {
-//           // Clear previous buttons to prevent duplication
-//           const container = document.getElementById('paypal-button-container');
-//           if (container) container.innerHTML = '';
-
-//           window.paypal.Buttons({
-//             createOrder: (data, actions) => {
-//               return actions.order.create({
-//                 purchase_units: [
-//                   {
-//                     amount: {
-//                       value: total,
-//                     },
-//                   },
-//                 ],
-//               });
-//             },
-//             onApprove: (data, actions) => {
-//               return actions.order.capture().then((details) => {
-//                 alert(`Transaction completed by ${details.payer.name.given_name}`);
-//                 window.location.href = `thank_you.php?orderID=${data.orderID}`;
-//               });
-//             },
-//             onError: (err) => {
-//               console.error('PayPal transaction error:', err);
-//               alert('An error occurred during the PayPal transaction.');
-//             },
-//           }).render('#paypal-button-container');
-//         } else {
-//           throw new Error('PayPal SDK is not available.');
-//         }
-//       } catch (error) {
-//         console.error('Error initializing PayPal buttons:', error);
-//       }
-//     };
-
-//     initializePayPalButtons();
-
-//     return () => {
-//       const container = document.getElementById('paypal-button-container');
-//       if (container) container.innerHTML = '';
-//     };
-//   }, [total]);
-
-//   return <div id="paypal-button-container" className="my-4"></div>;
-// };
-
-// export default PayPalButton;
+export default PayPalButton;
