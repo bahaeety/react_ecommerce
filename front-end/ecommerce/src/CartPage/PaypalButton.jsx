@@ -21,7 +21,7 @@ const PayPalButton = ({ totalPrice }) => {
                 purchase_units: [
                   {
                     amount: {
-                      value: totalPrice.toString(), 
+                      value: 17.75, 
                     },
                   },
                 ],
