@@ -13,17 +13,17 @@ function Testimonials() {
             {
               name: 'Alice M.',
               text: 'EcoCart has completely changed the way I shop. I feel good about my purchases!',
-              image: 'https://via.placeholder.com/80',
+              image: 'https://i.pinimg.com/originals/f8/66/8e/f8668e5328cfb4938903406948383cf6.png',
             },
             {
               name: 'John D.',
               text: 'High-quality products with an eco-friendly touch. Love this store!',
-              image: 'https://via.placeholder.com/80',
+              image: 'https://headshots-inc.com/wp-content/uploads/2021/06/FINAL-Blog-Images-1-2-1024x683.jpg',
             },
             {
               name: 'Sarah K.',
               text: 'Finally a store that values sustainability as much as I do! Much support',
-              image: 'https://via.placeholder.com/80',
+              image: 'https://th.bing.com/th/id/OIP.ibL_TgLW0aC7EaoHP-rdsQHaHa?rs=1&pid=ImgDetMain',
             },
           ].map((testimonial, index) => (
             <Col xs={12} md={4} key={index} className="mb-4">
